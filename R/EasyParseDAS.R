@@ -69,7 +69,8 @@ rmats_to_volcano_plot <- function(
          title = volcano.title) +
     #annotate('text',x=-xlimit[2]*0.75,y=ylimit[2]*0.75, label=decrease.num) +
     #annotate('text',x=xlimit[2]*0.75,y=ylimit[2]*0.75, label=increase.num) + 
-    geom_text(data=event.count.tab,mapping=aes(x=x,y=y,label=Freq)) + 
+    geom_text(data=event.count.tab,mapping=aes(x=x,y=y,label=Freq),
+              size=8,size.unit='pt') + 
     facet_grid(.~EventType) + 
     theme(
       panel.grid.minor = element_blank(),

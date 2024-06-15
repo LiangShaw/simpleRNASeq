@@ -66,8 +66,8 @@ DESeq_to_volcano_plot <- function(
                   '; log2FC:',log2fc.thres,')'),
          y=y.axis.label,
          title = volcano.title) +
-    annotate('text',x=-xlimit[2]/2,y=ylimit[2]/2, label=decrease.num) +
-    annotate('text',x=xlimit[2]/2,y=ylimit[2]/2, label=increase.num)
+    annotate('text',x=-xlimit[2]/2,y=ylimit[2]/2, label=decrease.num, size=8,size.unit='pt') +
+    annotate('text',x=xlimit[2]/2,y=ylimit[2]/2, label=increase.num, size=8,size.unit='pt')
 
   return( list(modify.tab, vol.plot) )
 }
