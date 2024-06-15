@@ -48,6 +48,10 @@ rmats_to_volcano_plot <- function(
   increase.num <- modify.tab %>% filter(change=='inc') %>% nrow()
   decrease.num <- modify.tab %>% filter(change=='dec') %>% nrow()
 
+  event.count.tab <- modify.tab %>% select(EventType,change) %>% table() %>% as.data.frame() %>% 
+    mutate(x=ifelse(change=='dec', -xlimit[2]*0.75, xlimit[2]*0.75),
+           y=ylimit[2]*0.75 )
+
   vol.plot <- modify.tab %>%
     ggplot(aes(x=IncLevelDifference ,y=yvalue, color=change)) +
     geom_point(size=0.8) +
@@ -67,8 +71,10 @@ rmats_to_volcano_plot <- function(
                   '; ΔPSI:',deltaPSI.thres,')'),
          y=y.axis.label,
          title = volcano.title) +
-    annotate('text',x=-xlimit[2]*0.75,y=ylimit[2]*0.75, label=decrease.num) +
-    annotate('text',x=xlimit[2]*0.75,y=ylimit[2]*0.75, label=increase.num)
+    #annotate('text',x=-xlimit[2]*0.75,y=ylimit[2]*0.75, label=decrease.num) +
+    #annotate('text',x=xlimit[2]*0.75,y=ylimit[2]*0.75, label=increase.num) + 
+    geom_text(data=event.count.tab,mapping=aes(x=x,y=y,label=Freq)) + 
+    facet_grid()
 
   return( list(modify.tab, vol.plot) )
 }
