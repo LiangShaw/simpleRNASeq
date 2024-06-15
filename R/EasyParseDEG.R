@@ -49,7 +49,7 @@ DESeq_to_volcano_plot <- function(
 
   vol.plot <- modify.tab %>%
     ggplot(aes(x=log2FoldChange ,y=yvalue, color=change)) +
-    geom_point(size=0.8) +
+    geom_point(size=0.1, alpha=0.1) +
     theme_bw(base_size = 7) +
     theme(
       panel.grid.minor = element_blank(),

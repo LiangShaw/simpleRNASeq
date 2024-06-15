@@ -54,7 +54,7 @@ rmats_to_volcano_plot <- function(
 
   vol.plot <- modify.tab %>%
     ggplot(aes(x=IncLevelDifference ,y=yvalue, color=change)) +
-    geom_point(size=0.8) +
+    geom_point(size=0.1, alpha=0.1) +
     theme_bw(base_size = 7) +
     scale_color_manual(
       values = c('inc'=inc.color,
