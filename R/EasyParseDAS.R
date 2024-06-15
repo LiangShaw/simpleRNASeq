@@ -62,9 +62,9 @@ rmats_to_volcano_plot <- function(
                  'n.s.'=ns.color)) +
     scale_x_continuous(limits = xlimit, expand = c(0,0)) +
     scale_y_continuous(limits = ylimit, expand = c(0,0)) +
-    labs(x=paste0('ΔPSI\n(PValue:',PValue.thres,
+    labs(x=paste0('deltaPSI\n(PValue:',PValue.thres,
                   '; FDR:', FDR.thres,
-                  '; ΔPSI:',deltaPSI.thres,')'),
+                  '; deltaPSI:',deltaPSI.thres,')'),
          y=y.axis.label,
          title = volcano.title) +
     #annotate('text',x=-xlimit[2]*0.75,y=ylimit[2]*0.75, label=decrease.num) +
