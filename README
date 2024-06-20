@@ -1,0 +1,6 @@
+# simpleRNASeq 
+Let RNA-seq analysis simple and easy to repeat!
+
+## Description
+simpleRNASeq mainly consists of differentially gene expression (DEG) analysis and alternative splicing (DAS) analysis, following downstream data visualization.
+
