@@ -48,7 +48,8 @@ rmats_to_volcano_plot <- function(
   increase.num <- modify.tab %>% filter(change=='inc') %>% nrow()
   decrease.num <- modify.tab %>% filter(change=='dec') %>% nrow()
 
-  event.count.tab <- modify.tab %>% select(EventType,change) %>% table() %>% as.data.frame() %>%
+  event.count.tab <- modify.tab %>%
+    select(EventType,change) %>% table() %>% as.data.frame() %>%
     mutate(x=ifelse(change=='dec', -xlimit[2]*0.7, xlimit[2]*0.7),
            y=ylimit[2]*0.7 )
 
@@ -78,7 +79,7 @@ rmats_to_volcano_plot <- function(
                  'dec'=dec.color,
                  'n.s.'=ns.color))
 
-  violin.event.count.tab <- SBZ.HeLa.Cas9_vs_WT.volcano.list[[1]] %>%
+  violin.event.count.tab <- modify.tab %>%
   select(EventType,change) %>%
   table() %>% as.data.frame() %>%
   mutate(x=ifelse(change=='dec', -1,1),
