@@ -11,7 +11,7 @@ rmats_to_volcano_plot(
   deltaPSI.thres = 0.05,
   ylimit = c(0, 10),
   xlimit = c(-1, 1),
-  volcano.title = "Gene expression change (treat vs ctrl)",
+  volcano.title = "PSI change (treat vs ctrl)",
   yaxis = "FDR",
   inc.color = "red",
   dec.color = "blue",
@@ -23,7 +23,7 @@ rmats_to_volcano_plot(
 
 \item{FDR.thres}{FDR threshold for significant change.}
 
-\item{deltaPSI.thres}{log2FC threshold for significant change.}
+\item{deltaPSI.thres}{delta PSI threshold for significant change.}
 
 \item{ylimit}{volcano plot y axis range. default c(0,10).}
 
@@ -39,10 +39,10 @@ rmats_to_volcano_plot(
 
 \item{ns.color}{color for not significantly changed point. Dafault 'grey60'.}
 
-\item{DAtab}{Differentially alternative splicing table.}
+\item{DAtab}{Differentially alternative splicing table. PValue, FDR, deltaPSI (IncLevelDifference) are required.}
 }
 \value{
-a list containing table with change and volcano plot
+a list containing table with change and volcano plot, violin plot
 }
 \description{
 rmats result to volcano plot

@@ -14,7 +14,7 @@
 #'
 #'
 #' @examples deseq(count_tab,'treatment','ctrl',3,3,0.05,2)
-deseq <- function(count_tab,tlabel,clabel,tRepN,cRepN,pthre=0.05,foldchange=1){
+EasyDESeq <- function(count_tab,tlabel,clabel,tRepN,cRepN,pthre=0.05,foldchange=1){
   countcol <- count_tab[rowSums(count_tab)>1,]
   #colnames(countcol) <- c('ctrl1','ctrl2','ctrl3','treat1','treat2','treat3')
   condition <- factor(c(rep(clabel,cRepN),rep(tlabel,tRepN)),levels = c(clabel,tlabel))

@@ -4,7 +4,6 @@
 #'
 #' @return TPM matrix. rownames are gene ids
 #' @import tidyverse dplyr
-#' @examples
 readcount_to_TPM <- function(gene.readcount.tab){
   gene.count.tab <-
     gene.readcount.tab %>%
