@@ -18,7 +18,7 @@
 #'
 #' @examples rmats_to_volcano_plot(tab,PValue.thres=1,FDR.thres=0.05,deltaPSI.thres=0.05,ylimit=c(0,10),xlimit=c(-1,1),volcano.title='Differentially AS (treat vs ctrl)',yaxis='FDR', inc.color='red',dec.color='blue',ns.color='grey60')
 rmats_to_volcano_plot <- function(
-    tab,PValue.thres=1,FDR.thres=0.05,deltaPSI.thres=0.05,
+    tab,PValue.thres=0.05,FDR.thres=0.05,deltaPSI.thres=0.05,
     ylimit=c(0,10),xlimit=c(-1,1),
     volcano.title='PSI change (treat vs ctrl)',
     yaxis='FDR', inc.color='red',dec.color='blue',ns.color='grey60'){
@@ -107,7 +107,12 @@ rmats_to_volcano_plot <- function(
           axis.line.y = element_blank()) +
     facet_grid(EventType~.) +
     scale_color_npg() +
-    scale_fill_npg()
+    scale_fill_npg() +
+    labs(x=paste0('deltaPSI\n(PValue:',PValue.thres,
+                  '; FDR:', FDR.thres,
+                  '; deltaPSI:',deltaPSI.thres,')'),
+         y=NULL,
+         title = volcano.title)
 
   return( list(modify.tab, vol.plot, violin.plot) )
 }

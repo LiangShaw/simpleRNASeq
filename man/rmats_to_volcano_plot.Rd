@@ -6,7 +6,7 @@
 \usage{
 rmats_to_volcano_plot(
   tab,
-  PValue.thres = 1,
+  PValue.thres = 0.05,
   FDR.thres = 0.05,
   deltaPSI.thres = 0.05,
   ylimit = c(0, 10),
