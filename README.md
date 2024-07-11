@@ -26,9 +26,20 @@ you can type `help(function)` in R console to view the function help document.
 
 ## EasyDESeq
 Make use of [DESeq2](https://www.bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html) R package and integrate all the steps into only one.
+
+read count table containing read numbers for control and treatment samples (control at first):
+- count of control rep1
+- count of control rep2
+- count of control repN
+- count of treatment rep1
+- count of treatment rep2
+- count of treatment repN
+
 ```r
-EasyDESeq(count_tab,tlabel,clabel,tRepN,cRepN,pthre=0.05,foldchange=1)
+EasyDESeq(count_tab,tlabel='treatment',clabel='control',tRepN=3,cRepN=3,pthre=0.05,foldchange=1)
 ```
+
+you will get a list containing a **DESeq2 result** and a **scale factor** dataframe.
 
 ## DESeq_to_volcano_plot
 provide a table containing three columns at least:
