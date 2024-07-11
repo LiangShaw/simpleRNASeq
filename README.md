@@ -46,15 +46,16 @@ DESeq_to_volcano_plot(
     yaxis='padj', inc.color='red',dec.color='blue',ns.color='grey60')
 ```
 
-You will get a list containing a <u>table</u> with change annotation like:  
+You will get a list containing  
+- a <u>table</u> with change annotation like:  
 
-| | baseMean | log2FoldChange | lfcSE | stat | pvalue | padj | change | yvalue |
+|  | baseMean | log2FoldChange | lfcSE | stat | pvalue | padj | change | yvalue |
 |---|---|---|---|---|---|---|---|---|
 |PERM1|24.39|-1.942|0.634|-3.061|0.0022|0.006|dec|2.2210|
 |ISG15|175.792|-1.137|0.202|-5.603|2.1059e-08|1.082e-07|dec|6.965|
 |TAS1R3|101.24|-1.054|0.258|-4.0738|4.623e-05|0.000162|dec|3.7902|
 
-and a <u>volcano plot</u> like:  
+- and a <u>volcano plot</u> like:  
 
 <img src="img/DEG_volcanoplot.png" alt="DEG volcano plot" width=400>  
 

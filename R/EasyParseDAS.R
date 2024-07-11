@@ -100,14 +100,14 @@ rmats_to_volcano_plot <- function(
               size=7,size.unit='pt') +
     scale_x_continuous(limits = c(-1,1),expand = c(0,0)) +
     scale_y_discrete(expand = c(0,0)) +
-    theme_prism(base_size = 8) +
+    ggprism::theme_prism(base_size = 8) +
     theme(strip.background = element_blank(),
           axis.text.y = element_blank(),
           axis.ticks.y = element_blank(),
           axis.line.y = element_blank()) +
     facet_grid(EventType~.) +
-    scale_color_npg() +
-    scale_fill_npg() +
+    ggsci::scale_color_npg() +
+    ggsci::scale_fill_npg() +
     labs(x=paste0('deltaPSI\n(PValue:',PValue.thres,
                   '; FDR:', FDR.thres,
                   '; deltaPSI:',deltaPSI.thres,')'),
