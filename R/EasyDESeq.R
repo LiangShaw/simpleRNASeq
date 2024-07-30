@@ -8,7 +8,7 @@
 #' @param pthre padj threshold for summary output in console
 #' @param foldchange fold change threshold for summary output in console
 #'
-#' @import DESeq2 tidyverse
+#' @importFrom DESeq2 tidyverse
 #' @return a list containg DESeq2 result table and scale factor dataframe
 #' @export
 #'

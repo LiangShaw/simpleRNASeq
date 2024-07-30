@@ -11,6 +11,8 @@ DESeq_to_volcano_plot(
   log2fc.thres = 1,
   ylimit = c(0, 20),
   xlimit = c(-10, 10),
+  point.size = 0.1,
+  point.alpha = 0.1,
   volcano.title = "Gene expression change (treat vs ctrl)",
   yaxis = "padj",
   inc.color = "red",
@@ -30,6 +32,10 @@ DESeq_to_volcano_plot(
 \item{ylimit}{volcano plot y axis range. default c(0,20).}
 
 \item{xlimit}{volcano plot y axis range. default c(-10,10).}
+
+\item{point.size}{point size. Default 0.1.}
+
+\item{point.alpha}{point alpha. 0~1. Default 0.1.}
 
 \item{volcano.title}{volcano plot title.}
 

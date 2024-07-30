@@ -11,6 +11,8 @@ rmats_to_volcano_plot(
   deltaPSI.thres = 0.05,
   ylimit = c(0, 10),
   xlimit = c(-1, 1),
+  point.size = 0.1,
+  point.alpha = 0.1,
   volcano.title = "PSI change (treat vs ctrl)",
   yaxis = "FDR",
   inc.color = "red",
@@ -28,6 +30,10 @@ rmats_to_volcano_plot(
 \item{ylimit}{volcano plot y axis range. default c(0,10).}
 
 \item{xlimit}{volcano plot y axis range. default c(-1,1).}
+
+\item{point.size}{point size}
+
+\item{point.alpha}{point alpha}
 
 \item{volcano.title}{volcano plot title.}
 

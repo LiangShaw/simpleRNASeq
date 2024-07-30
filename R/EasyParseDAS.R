@@ -6,20 +6,22 @@
 #' @param deltaPSI.thres delta PSI threshold for significant change.
 #' @param ylimit volcano plot y axis range. default c(0,10).
 #' @param xlimit volcano plot y axis range. default c(-1,1).
+#' @param point.alpha point alpha
+#' @param point.size point size
 #' @param volcano.title volcano plot title.
 #' @param yaxis y axis type. PValue or FDR.
 #' @param inc.color color for increased point. Default 'red'.
 #' @param dec.color color for decreased point. Default 'blue'.
 #' @param ns.color color for not significantly changed point. Dafault 'grey60'.
 #'
-#' @import tidyverse dplyr ggsci ggprism
+#' @importFrom tidyverse dplyr ggsci ggprism
 #' @return a list containing table with change and volcano plot, violin plot
 #' @export
 #'
 #' @examples rmats_to_volcano_plot(tab,PValue.thres=1,FDR.thres=0.05,deltaPSI.thres=0.05,ylimit=c(0,10),xlimit=c(-1,1),volcano.title='Differentially AS (treat vs ctrl)',yaxis='FDR', inc.color='red',dec.color='blue',ns.color='grey60')
 rmats_to_volcano_plot <- function(
     tab,PValue.thres=0.05,FDR.thres=0.05,deltaPSI.thres=0.05,
-    ylimit=c(0,10),xlimit=c(-1,1),
+    ylimit=c(0,10),xlimit=c(-1,1),point.size=0.1,point.alpha=0.1,
     volcano.title='PSI change (treat vs ctrl)',
     yaxis='FDR', inc.color='red',dec.color='blue',ns.color='grey60'){
   if (yaxis=='FDR'){
@@ -55,7 +57,7 @@ rmats_to_volcano_plot <- function(
 
   vol.plot <- modify.tab %>%
     ggplot(aes(x=IncLevelDifference ,y=yvalue, color=change)) +
-    geom_point(size=0.1, alpha=0.1) +
+    geom_point(size=point.size, alpha=point.alpha) +
     geom_text(data=event.count.tab,mapping=aes(x=x,y=y,label=Freq),
               size=7,size.unit='pt') +
     theme_bw(base_size = 7) +
@@ -89,7 +91,7 @@ rmats_to_volcano_plot <- function(
 
   violin.plot <- modify.tab %>%
     ggplot(aes(x=IncLevelDifference,y='1')) +
-    geom_point(aes(color=EventType),size=0.3,alpha=0.3,
+    geom_point(aes(color=EventType),size=point.size,alpha=point.alpha,
               position = position_jitter(height = 0.1)) +
     #geom_boxplot(aes(group=change,fill=EventType),outliers = F,width=0.5,
     #             position = position_dodge(width = 0,preserve = 'single')) +

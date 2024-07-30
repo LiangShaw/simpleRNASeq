@@ -7,19 +7,21 @@
 #' @param log2fc.thres log2FC threshold for significant change.
 #' @param ylimit volcano plot y axis range. default c(0,20).
 #' @param xlimit volcano plot y axis range. default c(-10,10).
+#' @param point.size point size. Default 0.1.
+#' @param point.alpha point alpha. 0~1. Default 0.1.
 #' @param volcano.title volcano plot title.
 #' @param yaxis y axis type. padj or pvalue.
 #' @param inc.color color for increased point. Default 'red'.
 #' @param dec.color color for decreased point. Default 'blue'.
 #' @param ns.color color for not significantly changed point. Dafault 'grey60'.
-#' @import tidyverse dplyr
+#' @importFrom tidyverse dplyr
 #' @return a list containing table with change and volcano plot
 #' @export
 #'
 #' @examples DESeq_to_volcano_plot(tab,pvalue.thres=1,padj.thres=0.05,log2fc.thres=1,ylimit=c(0,20),xlimit=c(-10,10),volcano.title='Gene expression change (treat vs ctrl)',yaxis='padj', inc.color='red',dec.color='blue',ns.color='grey60')
 DESeq_to_volcano_plot <- function(
     tab,pvalue.thres=1,padj.thres=0.05,log2fc.thres=1,
-    ylimit=c(0,20),xlimit=c(-10,10),
+    ylimit=c(0,20),xlimit=c(-10,10),point.size=0.1,point.alpha=0.1,
     volcano.title='Gene expression change (treat vs ctrl)',
     yaxis='padj', inc.color='red',dec.color='blue',ns.color='grey60'){
   if (yaxis=='padj'){
@@ -49,7 +51,7 @@ DESeq_to_volcano_plot <- function(
 
   vol.plot <- modify.tab %>%
     ggplot(aes(x=log2FoldChange ,y=yvalue, color=change)) +
-    geom_point(size=0.1, alpha=0.1) +
+    geom_point(size=point.size, alpha=point.alpha) +
     theme_bw(base_size = 7) +
     theme(
       panel.grid.minor = element_blank(),
