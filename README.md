@@ -25,6 +25,15 @@ library(DESeq2) # if used
 you can type `help(function)` in R console to view the function help document.
 
 ## EasyDESeq
+You can use software [featureCounts](https://subread.sourceforge.net/featureCounts.html) to obtain read number for genes.
+```bash
+ls align/*bam | xargs featureCounts -a annotation.gtf -o gene.readcount.txt -t exon -g gene_name -s
+```
+and reshape the output,
+```bash
+cat gene.readcount.txt | awk 'NR>1' | sed 's|align/||g' | sed 's|.sorted.bam||g' 
+```
+
 Make use of [DESeq2](https://www.bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html) R package and integrate all the steps into only one.
 
 read count table containing read numbers for control and treatment samples (control at first):
