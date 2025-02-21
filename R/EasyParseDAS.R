@@ -28,9 +28,9 @@ rmats_to_volcano_plot <- function(
     modify.tab <- tab %>%
       mutate(
         change=
-          ifelse(FDR>=FDR.thres | PValue>=PValue.thres | is.na(FDR),'n.s.',
-                 ifelse(IncLevelDifference>=deltaPSI.thres, 'inc',
-                        ifelse(IncLevelDifference<=-deltaPSI.thres, 'dec', 'n.s.') ) ),
+          ifelse(FDR<FDR.thres & PValue<PValue.thres & IncLevelDifference>=deltaPSI.thres, 'inc',
+                 ifelse(FDR<FDR.thres & PValue<PValue.thres & IncLevelDifference<=-deltaPSI.thres, 'dec', 'n.s.')
+                 ),
         yvalue=ifelse(-log10(FDR)>ylimit[2],ylimit[2],-log10(FDR))
       )
 
@@ -39,9 +39,9 @@ rmats_to_volcano_plot <- function(
     modify.tab <- tab %>%
       mutate(
         change=
-          ifelse(PValue>=PValue.thres ,'n.s.',
-                 ifelse(IncLevelDifference>=deltaPSI.thres, 'inc',
-                        ifelse(IncLevelDifference<=-deltaPSI.thres, 'dec', 'n.s.') ) ),
+          ifelse(PValue<PValue.thres & IncLevelDifference>=deltaPSI.thres, 'inc',
+                 ifelse(PValue<PValue.thres & IncLevelDifference>=deltaPSI.thres, 'dec','n.s.')
+                 ),
         yvalue=ifelse(-log10(PValue)>ylimit[2],ylimit[2],-log10(PValue))
       )
     y.axis.label <- '-log10(PValue)'

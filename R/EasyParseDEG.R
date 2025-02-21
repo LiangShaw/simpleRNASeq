@@ -28,9 +28,9 @@ DESeq_to_volcano_plot <- function(
     modify.tab <- tab %>%
       mutate(
         change=
-          ifelse(padj>=padj.thres | pvalue>=pvalue.thres | is.na(padj),'n.s.',
-                 ifelse(log2FoldChange>=log2fc.thres, 'inc',
-                        ifelse(log2FoldChange<=-log2fc.thres, 'dec', 'n.s.') ) ),
+          ifelse(padj<padj.thres & pvalue<pvalue.thres & log2FoldChange>=log2fc.thres,'inc',
+                 ifelse(padj<padj.thres & pvalue<pvalue.thres & log2FoldChange<=-log2fc.thres, 'dec', 'n.s.')
+                 ),
         yvalue=ifelse(-log10(padj)>ylimit[2],ylimit[2],-log10(padj))
       )
     y.axis.label <- '-log10(Padj)'
@@ -38,9 +38,9 @@ DESeq_to_volcano_plot <- function(
     modify.tab <- tab %>%
       mutate(
         change=
-          ifelse(pvalue>=pvalue.thres ,'n.s.',
-                 ifelse(log2FoldChange>=log2fc.thres, 'inc',
-                        ifelse(log2FoldChange<=-log2fc.thres, 'dec', 'n.s.') ) ),
+          ifelse(pvalue<pvalue.thres & log2FoldChange>=log2fc.thres, 'inc',
+                 ifelse(pvalue<pvalue.thres & log2FoldChange<=-log2fc.thres, 'dec', 'n.s.')
+                 ),
         yvalue=ifelse(-log10(pvalue)>ylimit[2],ylimit[2],-log10(pvalue))
       )
     y.axis.label <- '-log10(PValue)'
